@@ -2,6 +2,8 @@ import { useState } from "react";
 
 export default function PlaceGallery({ place }) {
   const [showAllPhotos, setShowAllPhotos] = useState(false);
+  const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 
   if (showAllPhotos) {
     return (
@@ -19,7 +21,7 @@ export default function PlaceGallery({ place }) {
           {place?.photos?.length > 0 && place.photos.map(photo => (
             <div key={photo}>
               <img
-                src={`http://localhost:4000/uploads/${photo.replace(/^.*[\\/]/, '')}`}
+                src={`${BASE_URL}/uploads/${photo.replace(/^.*[\\/]/, '')}`}
                 alt="photo"
               />
             </div>
@@ -35,17 +37,31 @@ export default function PlaceGallery({ place }) {
         <div>
           {place.photos?.[0] && (
             <div>
-              <img onClick={() => setShowAllPhotos(true)} className="aspect-square cursor-pointer object-cover" src={`http://localhost:4000/uploads/${place.photos[0].replace(/^.*[\\/]/, '')}`} alt="main" />
-            </div>
+              <img
+                onClick={() => setShowAllPhotos(true)}
+                className="aspect-square cursor-pointer object-cover"
+                src={`${BASE_URL}/uploads/${place.photos[0].replace(/^.*[\\/]/, '')}`}
+                alt="main"
+              />            </div>
           )}
         </div>
         <div className="grid">
           {place.photos?.[1] && (
-            <img onClick={() => setShowAllPhotos(true)} className="aspect-square cursor-pointer object-cover" src={`http://localhost:4000/uploads/${place.photos[1].replace(/^.*[\\/]/, '')}`} alt="" />
+            <img
+              onClick={() => setShowAllPhotos(true)}
+              className="aspect-square cursor-pointer object-cover"
+              src={`${BASE_URL}/uploads/${place.photos[1].replace(/^.*[\\/]/, '')}`}
+              alt=""
+            />
           )}
           <div className="overflow-hidden">
             {place.photos?.[2] && (
-              <img onClick={() => setShowAllPhotos(true)} className="aspect-square cursor-pointer object-cover relative top-2" src={`http://localhost:4000/uploads/${place.photos[2].replace(/^.*[\\/]/, '')}`} alt="" />
+              <img
+                onClick={() => setShowAllPhotos(true)}
+                className="aspect-square cursor-pointer object-cover relative top-2"
+                src={`${BASE_URL}/uploads/${place.photos[2].replace(/^.*[\\/]/, '')}`}
+                alt=""
+              />
             )}
           </div>
         </div>

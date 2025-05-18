@@ -7,6 +7,8 @@ export default function IndexPage() {
     const [averagePrice, setAveragePrice] = useState(0);
     const [featuredPlaces, setFeaturedPlaces] = useState([]);
     const [popularPlaces, setPopularPlaces] = useState([]);
+    const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 
     useEffect(() => {
         axios.get('/places').then(response => setPlaces(response.data));
@@ -60,7 +62,7 @@ export default function IndexPage() {
                             {place.photos?.[0] && (
                                 <img
                                     className="w-full h-full object-cover"
-                                    src={`http://localhost:4000/uploads/${place.photos[0].replace(/^.*[\\/]/, '')}`}
+                                    src={`${BASE_URL}/uploads/${place.photos[0].replace(/^.*[\\/]/, '')}`}
                                     alt={place.title}
                                 />
                             )}

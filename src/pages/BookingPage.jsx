@@ -8,6 +8,8 @@ import BookingDates from "../BookingDates";
 export default function BookingPage() {
   const { id } = useParams();
   const [booking, setBooking] = useState(null);
+  const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 
   useEffect(() => {
     if (id) {
@@ -74,7 +76,7 @@ export default function BookingPage() {
               <span className="text-blue-600 text-lg">Rental Agreement (PDF)</span>
             </div>
             <a
-              href={`http://localhost:4000/uploads/${booking.place.rentalAgreementPDF}`}
+              href={`${BASE_URL}/uploads/${booking.place.rentalAgreementPDF}`}
               target="_blank"
               rel="noreferrer"
               className="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition"

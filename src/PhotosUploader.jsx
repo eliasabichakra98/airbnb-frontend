@@ -2,8 +2,10 @@ import axios from "axios";
 import { useState } from "react";
 
 export default function PhotosUploader({ addedPhotos, onChange }) {
-  const [photoLink, setPhotoLink] = useState('');
+  const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
+  const [photoLink, setPhotoLink] = useState('');
+   
   async function addPhotoByLink(ev) {
     ev.preventDefault();
     const { data: filename } = await axios.post('/upload-by-link', { link: photoLink });
@@ -42,7 +44,7 @@ export default function PhotosUploader({ addedPhotos, onChange }) {
         {addedPhotos.length > 0 && addedPhotos.map(link => (
           <div className="h-32 flex relative" key={link} >
             <div>
-              <img src={`http://localhost:4000/uploads/${link.replace(/^.*[\\/]/, '')}`} alt="" />
+              <img src={`${BASE_URL}/uploads/${link.replace(/^.*[\\/]/, '')}`} alt="" />
             </div>
             <button onClick={ev => removePhoto(ev, link)} className="cursor-pointer absolute bottom-1 right-1 bg-opacity-50 rounded-2xl py-2 px-3">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
