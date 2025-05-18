@@ -16,6 +16,7 @@ export default function PopularPlacesPage() {
         });
 
         axios.get('/popular-places').then(response => {
+            console.log("Popular Places:", response.data); // 👈 Add this
             setPopularPlaces(response.data);
         });
 
