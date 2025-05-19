@@ -36,7 +36,7 @@ export default function ProfilePage() {
             <AccountNav />
             {subpage === 'profile' && (
                 <div className="flex flex-col items-center justify-center mt-10 p-6 bg-white shadow-lg rounded-xl max-w-lg mx-auto border border-blue-200">
-                    <h2 className="text-xl font-semibold text-blue-600">Welcome, {user.name}!</h2>
+                    <h2 className="text-xl font-semibold text-blue-600">Welcome to join our new airbnb booking app, {user.name}!</h2>
                     <p className="text-gray-600">Email: {user.email}</p>
                     <button onClick={logout} className="mt-4 px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">Logout</button>
                 </div>
